@@ -1,5 +1,6 @@
 const fetch = require('node-fetch');
 
+
 test('получение списка постов',
     async () => {
         const responce = await fetch('https://jsonplaceholder.typicode.com/posts')
@@ -8,6 +9,7 @@ test('получение списка постов',
         expect(responce.status).toBe(200)
         expect(Array.isArray(data)).toBe(true)
         expect(data.length).toBeGreaterThan(0)
+
 
         const post = data[0]
         expect(post).toHaveProperty('userId')

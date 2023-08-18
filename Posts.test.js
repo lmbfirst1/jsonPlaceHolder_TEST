@@ -5,7 +5,7 @@ const fetch = require('node-fetch');
 
 describe()
     beforeAll() 
-        pass
+        pass 
 
 describe('Тестирование API запросов для постов', () => {
     describe('Корректные запросы', () => {
@@ -45,10 +45,10 @@ describe('Тестирование API запросов для постов', ()
             const post = await responce.json();
             expect(responce.status).toBe(200);
             const expectedId = 7
-            //отошел от письменного кейса, проверяю только postId
+            //отошел от письменного кейса, проверяю только postId чтобы было меньше кода
             expect(post.id).toBe(expectedId)
             
-        })
+        });
     });
 
     describe('Некорректные запросы', () => {
@@ -73,7 +73,7 @@ describe('Тестирование API запросов для постов', ()
             const response = await fetch('https://jsonplaceholder.typicode.com/posts', requestOptions);
             expect(response.status).toBe(400);
             //возможно, ошибку он выдаст другую, сайт для этого не предназначен
-            //все равно все тесты проваливаются))
+            //хотя, не имеет значения, все равно все тесты проваливаются))
         });
 
         
@@ -82,16 +82,27 @@ describe('Тестирование API запросов для постов', ()
 
 describe('Тестирование API запросов для пользователей', () => {
     describe('Корректные запросы', () => {
-        // Тесты на корректные запросы к пользователям
+        it('Запрос на получение данных о пользователе', async () => {
+            const responce = await fetch('https://jsonplaceholder.typicode.com/users/2')
+            const user = await responce.json();
+            expect(responce.status).toBe(200);
+            expect(user).toHaveProperty('name');
+            expect(user).toHaveProperty('email');
+            
+        });
     });
 
     describe('Некорректные запросы', () => {
-        // Тесты на некорректные запросы к пользователям
+        it('несуществующий пользователь ', async () => {
+            const responce = await fetch('https://jsonplaceholder.typicode.com/users/77');
+            const user = await responce.json();
+            expect(responce.status).toBe(404);
     });
 });
+});
 
-describe()
-    afterAll()
-        pass
+// describe()
+//     afterAll()
+//         pass;
 
 

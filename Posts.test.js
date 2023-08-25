@@ -1,7 +1,7 @@
 //автоматизация тест-кейсов для https://jsonplaceholder.typicode.com/ 
 //попытка структурировать тесты в один файл разделив по describe-ам.
 //сильно в код не углублялся, цель - правильно понять подход и логику. 
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
 describe()
     beforeAll() 
